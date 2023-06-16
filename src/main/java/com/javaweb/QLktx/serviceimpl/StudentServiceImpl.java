@@ -19,12 +19,6 @@ public class StudentServiceImpl implements StudentService {
 	private StudentRepository studentRepository;
 
 	@Transactional
-	public Student save(Student student) {
-		Student createResponse = studentRepository.save(student);
-		return createResponse;
-	}
-
-	@Transactional
 	public Student update(Student student) {
 		Student updateResponse = studentRepository.save(student);
 		return updateResponse;

@@ -9,7 +9,6 @@ import com.javaweb.QLktx.models.Student;
 @Component
 public interface StudentService {
 
-	public Student save(Student student);
 	public Student update(Student student);
 	public Student get(Long id);
 	public void delete(Long id);

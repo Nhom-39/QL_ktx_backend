@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,7 @@ import com.javaweb.QLktx.models.Student;
 import com.javaweb.QLktx.services.StudentService;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/admin/quan-ly-sinh-vien")
 public class StudentController {
 	@Autowired
 	private StudentService studentService;
@@ -25,12 +24,6 @@ public class StudentController {
 	public List<Student> getAllStudent() {
 		List<Student> students = studentService.getAll();
         return students;
-	}
-
-	@PostMapping("/create")
-	public Student createStudent1(@RequestBody Student student) {
-		Student createResponse = studentService.save(student);
-		return createResponse;
 	}
 	
 	@PutMapping("/{id}")
@@ -48,6 +41,6 @@ public class StudentController {
 	@DeleteMapping("/{id}")
 	public String deleteStudent(@PathVariable Long id) {
 		studentService.delete(id);
-		return "Record deleted succesfully";
+		return "Xoá thông tin sinh viên thành công";
 	}
 }

@@ -16,7 +16,7 @@ import com.javaweb.QLktx.models.Room;
 import com.javaweb.QLktx.services.RoomService;
 
 @RestController
-@RequestMapping("admin/quan-ly-phong")
+@RequestMapping("/admin/quan-ly-phong")
 public class RoomController {
 	@Autowired
 	private RoomService roomService;
@@ -48,6 +48,6 @@ public class RoomController {
 	@DeleteMapping("/{id}")
 	public String deleteroom(@PathVariable Long id) {
 		roomService.delete(id);
-		return "Record deleted succesfully";
+		return "Xóa phòng thành công";
 	}
 }

@@ -11,7 +11,7 @@ public class Student {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "roll_number")
+	@Column(name = "roll_numbers")
 	private String rollNumber;
 
 	public Long getId() {

@@ -10,4 +10,5 @@ public interface RoomService {
 	public Room get(Long id);
 	public void delete(Long id);
 	public List<Room> getAll();
+	public List<Room> getSearchAll(String query);
 }

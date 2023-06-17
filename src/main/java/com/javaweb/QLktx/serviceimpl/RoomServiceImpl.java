@@ -46,4 +46,9 @@ public class RoomServiceImpl implements RoomService {
 	public List<Room> getAll() {
 	    return roomRepository.findAll();
 	}
+	
+	@Transactional
+	public List<Room> getSearchAll(String query) {
+	    return roomRepository.findByTenPhongOrToaNha(query);
+	}
 }

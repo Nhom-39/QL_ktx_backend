@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.javaweb.QLktx.models.Room;
 import com.javaweb.QLktx.models.Student;
+import com.javaweb.QLktx.repository.RoomRepository;
 import com.javaweb.QLktx.repository.StudentRepository;
 import com.javaweb.QLktx.services.StudentService;
 
@@ -17,9 +19,22 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	private StudentRepository studentRepository;
+	@Autowired
+	private RoomRepository roomRepository;
 
 	@Transactional
 	public Student update(Student student) {
+		Student updateResponse = studentRepository.save(student);
+		return updateResponse;
+	}
+	
+	@Transactional
+	public Student updateRoom(Long id, Long idPhong) {
+		Student student = studentRepository.findById(id)
+		        .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+		Room room = roomRepository.findById(idPhong)
+		        .orElseThrow(() -> new RuntimeException("Room not found with id: " + idPhong));
+		student.setRoom(room);
 		Student updateResponse = studentRepository.save(student);
 		return updateResponse;
 	}

@@ -28,9 +28,15 @@ public class RoomController {
 	}
 
 	@PostMapping("/create")
-	public Room createroom1(@RequestBody Room room) {
+	public Room createroom(@RequestBody Room room) {
 		Room createResponse = roomService.save(room);
 		return createResponse;
+	}
+	
+	@GetMapping("/{id}")
+	public Room getRoomInfo(@PathVariable Long id) {
+		Room getReponse = roomService.get(id);
+		return getReponse;
 	}
 	
 	@PutMapping("/{id}")

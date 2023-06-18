@@ -38,6 +38,15 @@ public class StudentServiceImpl implements StudentService {
 		Student updateResponse = studentRepository.save(student);
 		return updateResponse;
 	}
+	
+	@Transactional
+	public Student removeStudentRoom(Long id) {
+		Student student = studentRepository.findById(id)
+		        .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+		student.setRoom(null);
+		Student updateResponse = studentRepository.save(student);
+		return updateResponse;
+	}
 
 	@Transactional
 	public Student get(Long id) {

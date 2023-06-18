@@ -33,6 +33,12 @@ public class StudentController {
 		return updateStudent;
 	}
 	
+	@PutMapping("/{id}/xoa-khoi-phong")
+	public Student removeStudentRoom(@PathVariable Long id) {
+		Student updateStudent = studentService.removeStudentRoom(id);
+		return updateStudent;
+	}
+	
 	@PutMapping("/{id}")
 	public Student updateStudent(@RequestBody Student student) {
 		Student updateResponse = studentService.update(student);

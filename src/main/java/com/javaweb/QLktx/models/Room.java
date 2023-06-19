@@ -16,8 +16,8 @@ public class Room {
 	@Column(name = "toa_nha")
 	private String toaNha;
 	
-	@Column(name = "so_luong")
-	private Integer soLuong;
+	@Column(name = "so_luong_max")
+	private Integer soLuongMax;
 
 	public Long getId() {
 		return id;
@@ -43,11 +43,11 @@ public class Room {
 		this.toaNha = toaNha;
 	}
 	
-	public Integer getSoLuong() {
-		return soLuong;
+	public Integer getSoLuongMax() {
+		return soLuongMax;
 	}
 
-	public void setSoLuong(Integer soLuong) {
-		this.soLuong = soLuong;
+	public void setSoLuongMax(Integer soLuongMax) {
+		this.soLuongMax = soLuongMax;
 	}
 }

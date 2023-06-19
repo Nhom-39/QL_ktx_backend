@@ -3,6 +3,7 @@ package com.javaweb.QLktx.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,9 +29,10 @@ public class StudentController {
 	}
 	
 	@PutMapping("/{id}/them-vao-phong")
-	public Student updateStudentRoom(@PathVariable Long id, @RequestParam("id_phong") Long idPhong) {
-		Student updateStudent = studentService.updateRoom(id, idPhong);
-		return updateStudent;
+	public ResponseEntity<String> updateStudentRoom(@PathVariable Long id, @RequestParam("id_phong") Long idPhong) {
+//		Student updateStudent = studentService.updateRoom(id, idPhong);
+//		return updateStudent;
+		return studentService.updateRoom(id, idPhong);
 	}
 	
 	@PutMapping("/{id}/xoa-khoi-phong")

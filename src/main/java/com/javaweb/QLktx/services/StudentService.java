@@ -2,6 +2,7 @@ package com.javaweb.QLktx.services;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.javaweb.QLktx.models.Student;
@@ -10,7 +11,7 @@ import com.javaweb.QLktx.models.Student;
 public interface StudentService {
 
 	public Student update(Student student);
-	public Student updateRoom(Long id, Long idPhong);
+	public ResponseEntity<String> updateRoom(Long id, Long idPhong);
 	public Student removeStudentRoom(Long id);
 	public Student get(Long id);
 	public void delete(Long id);

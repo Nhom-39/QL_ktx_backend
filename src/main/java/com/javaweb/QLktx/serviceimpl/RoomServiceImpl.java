@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.javaweb.QLktx.models.Room;
 import com.javaweb.QLktx.repository.RoomRepository;
+import com.javaweb.QLktx.repository.StudentRepository;
 import com.javaweb.QLktx.services.RoomService;
 
 import jakarta.transaction.Transactional;
@@ -17,6 +18,9 @@ public class RoomServiceImpl implements RoomService {
 
 	@Autowired
 	private RoomRepository roomRepository;
+	
+	@Autowired
+	private StudentRepository studentRepository;
 	
 	@Transactional
 	public Room save(Room room) {
@@ -39,6 +43,7 @@ public class RoomServiceImpl implements RoomService {
 
 	@Transactional
 	public void delete(Long id) {
+		studentRepository.removeRoomReference(id);
 		roomRepository.deleteById(id);
 	}
 	

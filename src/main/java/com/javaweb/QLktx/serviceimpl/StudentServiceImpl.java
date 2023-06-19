@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.javaweb.QLktx.models.Room;
@@ -29,14 +30,20 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	@Transactional
-	public Student updateRoom(Long id, Long idPhong) {
+	public ResponseEntity<String> updateRoom(Long id, Long idPhong) {
 		Student student = studentRepository.findById(id)
 		        .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
 		Room room = roomRepository.findById(idPhong)
 		        .orElseThrow(() -> new RuntimeException("Room not found with id: " + idPhong));
+		List<Student> studentList = studentRepository.findByIdPhong(idPhong);
+		Integer soLuongMax = roomRepository.findSoLuongMaxById(idPhong);
+		if(studentList.size() >= soLuongMax) {
+			return ResponseEntity.badRequest().body("Số lượng sinh viên trong phòng đã vượt quá giới hạn.");
+		}
 		student.setRoom(room);
 		Student updateResponse = studentRepository.save(student);
-		return updateResponse;
+//		return updateResponse;
+		return ResponseEntity.ok("Cập nhật phòng thành công.");
 	}
 	
 	@Transactional

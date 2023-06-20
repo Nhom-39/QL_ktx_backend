@@ -24,8 +24,17 @@ public class StudentServiceImpl implements StudentService {
 	private RoomRepository roomRepository;
 
 	@Transactional
-	public Student update(Student student) {
-		Student updateResponse = studentRepository.save(student);
+	public Student update(Long id, Student student) {
+		Student st = studentRepository.findById(id)
+		       .orElseThrow(() -> new RuntimeException("SinhVien not found with id: " + id));
+		
+		st.setHoTen(student.getHoTen());
+		st.setEmail(student.getEmail());
+		st.setGioiTinh(student.getGioiTinh());
+		st.setMaSV(student.getMaSV());
+		st.setNgaySinh(student.getNgaySinh());
+		st.setSoDienThoai(student.getSoDienThoai());
+		Student updateResponse = studentRepository.save(st);
 		return updateResponse;
 	}
 	
@@ -41,7 +50,7 @@ public class StudentServiceImpl implements StudentService {
 			return ResponseEntity.badRequest().body("Số lượng sinh viên trong phòng đã vượt quá giới hạn.");
 		}
 		student.setRoom(room);
-		Student updateResponse = studentRepository.save(student);
+		studentRepository.save(student);
 //		return updateResponse;
 		return ResponseEntity.ok("Cập nhật phòng thành công.");
 	}

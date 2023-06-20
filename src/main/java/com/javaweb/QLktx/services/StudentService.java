@@ -10,7 +10,7 @@ import com.javaweb.QLktx.models.Student;
 @Component
 public interface StudentService {
 
-	public Student update(Student student);
+	public Student update(Long id, Student student);
 	public ResponseEntity<String> updateRoom(Long id, Long idPhong);
 	public Student removeStudentRoom(Long id);
 	public Student get(Long id);

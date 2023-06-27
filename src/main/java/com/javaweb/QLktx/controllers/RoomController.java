@@ -16,7 +16,7 @@ import com.javaweb.QLktx.models.Room;
 import com.javaweb.QLktx.services.RoomService;
 
 @RestController
-@RequestMapping("/admin/quan-ly-phong")
+@RequestMapping({"/admin/quan-ly-phong", "/danh-sach-phong"})
 public class RoomController {
 	@Autowired
 	private RoomService roomService;

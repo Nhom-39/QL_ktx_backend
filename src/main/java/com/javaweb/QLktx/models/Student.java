@@ -36,7 +36,11 @@ public class Student {
 	@ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
-
+	
+	@ManyToOne
+    @JoinColumn(name = "id_phong_dang_ky")
+    private Room roomRegister;
+	
 	public Long getId() {
 		return id;
 	}
@@ -108,5 +112,14 @@ public class Student {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Room getRoomRegister() {
+		return roomRegister;
+	}
+
+	public void setRoomRegister(Room roomRegister) {
+		this.roomRegister = roomRegister;
+	}
+	
 	
 }

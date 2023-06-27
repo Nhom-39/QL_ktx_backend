@@ -17,7 +17,7 @@ import com.javaweb.QLktx.models.Student;
 import com.javaweb.QLktx.services.StudentService;
 
 @RestController
-@RequestMapping("/admin/quan-ly-sinh-vien")
+@RequestMapping("")
 public class StudentController {
 	@Autowired
 	private StudentService studentService;
@@ -28,35 +28,45 @@ public class StudentController {
         return students;
 	}
 	
-	@PutMapping("/{id}/them-vao-phong")
+	@PutMapping("/admin/quan-ly-sinh-vien/{id}/them-vao-phong")
 	public ResponseEntity<String> updateStudentRoom(@PathVariable Long id, @RequestParam("id_phong") Long idPhong) {
 //		Student updateStudent = studentService.updateRoom(id, idPhong);
 //		return updateStudent;
 		return studentService.updateRoom(id, idPhong);
 	}
 	
-	@PutMapping("/{id}/xoa-khoi-phong")
+	@PutMapping("/admin/quan-ly-sinh-vien/{id}/xoa-khoi-phong")
 	public Student removeStudentRoom(@PathVariable Long id) {
 		Student updateStudent = studentService.removeStudentRoom(id);
 		return updateStudent;
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/admin/quan-ly-sinh-vien/{id}")
 	public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
 		Student updateResponse = studentService.update(id, student);
 		return updateResponse;
 	}
 	
 
-	@GetMapping("/{id}/edit")
+	@GetMapping("/admin/quan-ly-sinh-vien/{id}/edit")
 	public Student getStudent(@PathVariable Long id) {
 		Student getReponse = studentService.get(id);
 		return getReponse;
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/admin/quan-ly-sinh-vien/{id}")
 	public String deleteStudent(@PathVariable Long id) {
 		studentService.delete(id);
 		return "Xoá thông tin sinh viên thành công";
+	}
+	
+	@PutMapping("/user/{masv}/dang-ky-phong")
+	public ResponseEntity<String> registerRoom(@PathVariable Integer masv, @RequestParam("id_phong_dang_ky") Long idPhong) {
+		return studentService.registerRoom(masv, idPhong);
+	}
+	
+	@GetMapping("/user/{masv}/room")
+	public Student getInfoRoom(@PathVariable Integer masv) {
+		return studentService.getInfoRoom(masv);
 	}
 }

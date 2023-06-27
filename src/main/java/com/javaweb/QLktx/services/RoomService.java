@@ -2,8 +2,11 @@ package com.javaweb.QLktx.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.javaweb.QLktx.models.Room;
 
+@Component
 public interface RoomService {
 	public Room save(Room room);
 	public Room update(Room room);

@@ -16,4 +16,6 @@ public interface StudentService {
 	public Student get(Long id);
 	public void delete(Long id);
 	public List<Student> getAll();
+	public ResponseEntity<String> registerRoom(Integer masv, Long idPhong);
+	public Student getInfoRoom(Integer masv);
 }

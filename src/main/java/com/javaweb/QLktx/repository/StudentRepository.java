@@ -19,4 +19,8 @@ public interface StudentRepository extends JpaRepository<Student, Serializable>{
 	@Modifying
     @Query("UPDATE Student s SET s.room = null WHERE s.room.id = ?1")
     void removeRoomReference(Long idPhong);
+	
+	@Query("SELECT s FROM Student s WHERE s.maSV = ?1")
+	Student findByMaSV(Integer masv);
+	
 }

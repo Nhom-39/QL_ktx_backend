@@ -80,4 +80,27 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getAll() {
 	    return studentRepository.findAll();
 	}
+	
+	@Transactional
+	public ResponseEntity<String> registerRoom(Integer masv, Long idPhong) {
+		Student student = studentRepository.findByMaSV(masv);
+		Room room = roomRepository.findById(idPhong)
+		        .orElseThrow(() -> new RuntimeException("Room not found with id: " + idPhong));
+		List<Student> studentList = studentRepository.findByIdPhong(idPhong);
+		Integer soLuongMax = roomRepository.findSoLuongMaxById(idPhong);
+		if(studentList.size() >= soLuongMax) {
+			return ResponseEntity.badRequest().body("Sinh viên trong phòng đã đầy.");
+		}
+		student.setRoomRegister(room);
+		studentRepository.save(student);
+//		return updateResponse;
+		return ResponseEntity.ok("Đăng ký phòng thành công.");
+	}
+	
+	@Transactional
+	public Student getInfoRoom(Integer masv) {
+		Student student = studentRepository.findByMaSV(masv);
+		return student;
+	}
+
 }

@@ -5,30 +5,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "nguoi_dung")
+@Table(name = "users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "tai_khoan", unique = true)
-	private String taiKhoan;
+	@Column(name = "username", unique = true)
+	private String username;
 
-	@Column(name = "mat_khau")
-	private String matKhau;
+	@Column(name = "password")
+	private String password;
 	
-	@ManyToOne
-    @JoinColumn(name = "vai_tro")
-    private Role role;
-
-	@ManyToOne
-    @JoinColumn(name = "id_sinh_vien")
-    private Student student;
+	@Column(name = "roles")
+    private String roles;
 
 	public Long getId() {
 		return id;
@@ -38,35 +31,42 @@ public class User {
 		this.id = id;
 	}
 
-	public String getTaiKhoan() {
-		return taiKhoan;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setTaiKhoan(String taiKhoan) {
-		this.taiKhoan = taiKhoan;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getMatKhau() {
-		return matKhau;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setMatKhau(String matKhau) {
-		this.matKhau = matKhau;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getRoles() {
+		return roles;
 	}
 
-	public Role getRole() {
-		return role;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
+	
+	public User() {
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+    
+    public User(String username, String password, String roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
 
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student; 
-	}
 }

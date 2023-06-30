@@ -77,7 +77,7 @@ public class SecurityConfig{
                 )
             .authorizeHttpRequests(authorizeRequests -> 
               authorizeRequests
-//                .requestMatchers("/user/**").authenticated()
+                .requestMatchers("/user/**").permitAll()
                 .requestMatchers("/admin/quan-ly-phong/**").permitAll()
                 .requestMatchers("/admin/quan-ly-sinh-vien/**").permitAll()
                 .anyRequest().permitAll()

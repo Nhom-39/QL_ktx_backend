@@ -22,7 +22,7 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
-	@GetMapping("")
+	@GetMapping("/admin/quan-ly-sinh-vien")
 	public List<Student> getAllStudent() {
 		List<Student> students = studentService.getAll();
         return students;

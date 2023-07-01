@@ -69,4 +69,9 @@ public class StudentController {
 	public Student getInfoRoom(@PathVariable Integer masv) {
 		return studentService.getInfoRoom(masv);
 	}
+	
+	@GetMapping("/admin/quan-ly-phong/{id_phong}/student")
+	public List<Student> getStudentsByRoom(@PathVariable Long id_phong) {
+		return studentService.getStudentsByRoom(id_phong);
+	}
 }

@@ -38,7 +38,7 @@ public class FeedbackServiceimpl implements FeedbackService{
 	@Transactional
 	public Feedback update(Long id, Feedback feedback) {
 		Feedback fb = feedbackRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+				.orElseThrow(() -> new RuntimeException("Feedback not found with id: " + id));
 		fb.setTraLoi(feedback.getTraLoi());
 		Feedback updateResponse = feedbackRepository.save(fb);
 		return updateResponse;

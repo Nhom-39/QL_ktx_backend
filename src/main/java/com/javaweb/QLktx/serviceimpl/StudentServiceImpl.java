@@ -102,5 +102,10 @@ public class StudentServiceImpl implements StudentService {
 		Student student = studentRepository.findByMaSV(masv);
 		return student;
 	}
+	
+	@Transactional
+	public List<Student> getStudentsByRoom(Long idPhong) {
+	    return studentRepository.findByIdPhong(idPhong);
+	}
 
 }

@@ -18,4 +18,5 @@ public interface StudentService {
 	public List<Student> getAll();
 	public ResponseEntity<String> registerRoom(Integer masv, Long idPhong);
 	public Student getInfoRoom(Integer masv);
+	public List<Student> getStudentsByRoom(Long idPhong);
 }

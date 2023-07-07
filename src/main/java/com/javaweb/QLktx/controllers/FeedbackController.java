@@ -39,12 +39,6 @@ public class FeedbackController {
 		return createResponse;
 	}
 	
-	@GetMapping("/{id}")
-	public Feedback getRoomInfo(@PathVariable Long id) {
-		Feedback getReponse = feedBackService.get(id);
-		return getReponse;
-	}
-	
 	@PutMapping("/admin/phan-hoi-y-kien/{id}")
 	public Feedback updateFeedback(@PathVariable Long id, @RequestBody Feedback feedback) {
 		Feedback updateResponse = feedBackService.update(id, feedback);

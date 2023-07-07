@@ -17,4 +17,7 @@ public interface CashCollectionDiaryRepository extends JpaRepository<CashCollect
 	@Modifying
     @Query("DELETE FROM CashCollectionDiary c WHERE c.consumptionDiary.id = :idTieuThu")
     void deleteByIdTieuThu(Long idTieuThu);
+	
+	@Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM CashCollectionDiary c WHERE c.consumptionDiary.id = :idTieuThu")
+	boolean existsByIdTieuThu(Long idTieuThu);
 }

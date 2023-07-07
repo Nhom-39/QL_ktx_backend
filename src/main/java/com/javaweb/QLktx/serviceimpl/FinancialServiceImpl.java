@@ -1,8 +1,10 @@
 package com.javaweb.QLktx.serviceimpl;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.javaweb.QLktx.models.CashCollectionDiary;
@@ -51,16 +53,18 @@ public class FinancialServiceImpl implements FinancialService{
 	}
 	
 	@Transactional
-	public CashCollectionDiary saveCashCollection(Long idTieuThu, CashCollectionDiary cashCollectionDiary) {
+	public ResponseEntity<String> saveCashCollection(Long idTieuThu, CashCollectionDiary cashCollectionDiary) {
 		ConsumptionDiary consumptionDiary = consumptionDiaryRepository.findById(idTieuThu)
 		        .orElseThrow(() -> new RuntimeException("ConsumptionDiary not found with id: " + idTieuThu));
+		boolean cashCD = cashCollectionDiaryRepository.existsByIdTieuThu(idTieuThu);
+		if(cashCD) return ResponseEntity.badRequest().body("Đã thu tiền trước đó.");
 		CashCollectionDiary ccd = new CashCollectionDiary();
 		ccd.setConsumptionDiary(consumptionDiary);
 		ccd.setNgayThu(cashCollectionDiary.getNgayThu());
 		ccd.setSoTien(cashCollectionDiary.getSoTien());
 		ccd.setGhiChu(cashCollectionDiary.getGhiChu());
 		CashCollectionDiary createResponse = cashCollectionDiaryRepository.save(ccd);
-		return createResponse;
+		return ResponseEntity.ok("Xác nhận thu tiền thành công.");
 	}
 	
 	@Transactional

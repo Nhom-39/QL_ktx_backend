@@ -3,6 +3,7 @@ package com.javaweb.QLktx.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +30,8 @@ public class FinancialController {
 	}
 	
 	@PostMapping("/admin/quan-ly-tai-chinh/thu-tien/create/{idTieuThu}")
-	public CashCollectionDiary createCashCollection(@PathVariable Long idTieuThu, @RequestBody CashCollectionDiary cashCollectionDiary) {
-		CashCollectionDiary createResponse = financialService.saveCashCollection(idTieuThu, cashCollectionDiary);
-		return createResponse;
+	public ResponseEntity<String> createCashCollection(@PathVariable Long idTieuThu, @RequestBody CashCollectionDiary cashCollectionDiary) {
+		return financialService.saveCashCollection(idTieuThu, cashCollectionDiary);
 	}
 	
 	@GetMapping("/admin/quan-ly-tai-chinh")

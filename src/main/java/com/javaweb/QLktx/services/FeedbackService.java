@@ -9,7 +9,7 @@ import com.javaweb.QLktx.models.Feedback;
 @Component
 public interface FeedbackService {
 	public Feedback save(Integer masv, Feedback feedback);
-	public Feedback update(Long id, Feedback feedback);
+	public Feedback update(Long id, String username, Feedback feedback);
 	public Feedback get(Long id);
 	public void delete(Long id);
 	public List<Feedback> getAllByUser(Integer masv);

@@ -8,7 +8,7 @@ import com.javaweb.QLktx.models.News;
 
 @Component
 public interface NewsService {
-	public News save(News news);
+	public News save(String username, News news);
 	public News update(Long id, News news);
 	public News get(Long id);
 	public void delete(Long id);

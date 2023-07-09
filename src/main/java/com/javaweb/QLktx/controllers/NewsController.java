@@ -27,9 +27,9 @@ public class NewsController {
         return news;
 	}
 	
-	@PostMapping("/admin/quan-ly-thong-bao/create")
-	public News createNews(@RequestBody News news) {
-		News createResponse = newsService.save(news);
+	@PostMapping("/admin/quan-ly-thong-bao/create/{username}")
+	public News createNews(@PathVariable String username, @RequestBody News news) {
+		News createResponse = newsService.save(username, news);
 		return createResponse;
 	}
 	

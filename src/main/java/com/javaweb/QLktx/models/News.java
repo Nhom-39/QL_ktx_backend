@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +28,10 @@ public class News {
 	private Timestamp createdAt;
 
     private String image;
+    
+	@ManyToOne
+    @JoinColumn(name = "id_admin")
+    private Admin admin;
 
 	public Long getId() {
 		return id;
@@ -66,5 +72,12 @@ public class News {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 }

@@ -39,9 +39,9 @@ public class FeedbackController {
 		return createResponse;
 	}
 	
-	@PutMapping("/admin/phan-hoi-y-kien/{id}")
-	public Feedback updateFeedback(@PathVariable Long id, @RequestBody Feedback feedback) {
-		Feedback updateResponse = feedBackService.update(id, feedback);
+	@PutMapping("/admin/phan-hoi-y-kien/{id}/{username}")
+	public Feedback updateFeedback(@PathVariable Long id, @PathVariable String username,  @RequestBody Feedback feedback) {
+		Feedback updateResponse = feedBackService.update(id, username, feedback);
 		return updateResponse;
 	}
 

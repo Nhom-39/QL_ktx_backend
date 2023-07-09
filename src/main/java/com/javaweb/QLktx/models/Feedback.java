@@ -32,6 +32,10 @@ public class Feedback {
 
 	@Column(name = "tra_loi", length = 1500)
     private String traLoi;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_admin")
+    private Admin admin;
 
 	public Long getId() {
 		return id;
@@ -80,4 +84,14 @@ public class Feedback {
 	public void setTraLoi(String traLoi) {
 		this.traLoi = traLoi;
 	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	
+	
 }
